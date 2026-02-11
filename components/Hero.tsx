@@ -84,10 +84,9 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
               </>
             ) : (
               <iframe 
-                className="w-full h-full"
+                className="w-full h-full border-0"
                 src={`https://www.youtube.com/embed/UmIxZatAqwY?autoplay=1&mute=1&controls=1&modestbranding=1&enablejsapi=1&widgetapi=1&origin=${encodeURIComponent(origin)}`} 
                 title="Omnipresent Agent Demo" 
-                frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowFullScreen
               ></iframe>

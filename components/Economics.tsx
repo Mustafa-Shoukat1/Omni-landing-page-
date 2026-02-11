@@ -66,7 +66,7 @@ const Economics: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                   fill="none" 
                   stroke={isDarkMode ? "#00D1FF" : "#2563EB"} 
                   strokeWidth="8" 
-                  className={`drop-shadow-[0_0_15px_${isDarkMode ? 'rgba(0,209,255,0.4)' : 'rgba(37,99,235,0.4)'}]`}
+                  className={isDarkMode ? 'drop-shadow-[0_0_15px_rgba(0,209,255,0.4)]' : 'drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]'}
                 />
 
                 <circle cx="0" cy="280" r="8" fill={isDarkMode ? "#00D1FF" : "#2563EB"} />
