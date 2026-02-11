@@ -76,32 +76,36 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
 
           <div className={`${cardBg} border-2 ${borderColor} p-10 md:p-16 rounded-[4rem] shadow-2xl glass-card relative`}>
             <div className="absolute top-10 right-10 text-[10px] font-black text-gray-700 tracking-[0.5em] uppercase opacity-40">Form V.7.01</div>
-            <h3 className={`text-3xl font-black mb-12 ${headingColor} tracking-tight`}> clearance application</h3>
+            <h3 className={`text-3xl font-black mb-12 ${headingColor} tracking-tight`}>Clearance Application</h3>
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Agent Identifier</label>
-                  <input required type="text" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white' : 'bg-slate-50 border-blue-100 text-slate-900'} border-2 rounded-2xl px-6 py-5 focus:outline-none focus:border-accent/50 transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Full Name" />
+                  <input required type="text" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Full Name" />
                 </div>
                 <div className="space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Communication</label>
-                  <input required type="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white' : 'bg-slate-50 border-blue-100 text-slate-900'} border-2 rounded-2xl px-6 py-5 focus:outline-none focus:border-accent/50 transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Email Address" />
+                  <input required type="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Email Address" />
                 </div>
               </div>
               <div className="space-y-3">
+                <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Phone Number</label>
+                <input required type="tel" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="(555) 123-4567" />
+              </div>
+              <div className="space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Target Market</label>
-                <input required type="text" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white' : 'bg-slate-50 border-blue-100 text-slate-900'} border-2 rounded-2xl px-6 py-5 focus:outline-none focus:border-accent/50 transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="City, State or Zip Code" />
+                <input required type="text" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="City, State or Zip Code" />
               </div>
               <div className="space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Current Yield</label>
-                <select className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white' : 'bg-slate-50 border-blue-100 text-slate-900'} border-2 rounded-2xl px-6 py-5 focus:outline-none focus:border-accent/50 transition-all font-bold shadow-inner`}>
+                <select className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold shadow-inner`}>
                   <option>0-2 Deals / Month</option>
                   <option>3-5 Deals / Month</option>
                   <option>5-10 Deals / Month</option>
                   <option>10+ Deals / Month</option>
                 </select>
               </div>
-              <button className={`w-full ${bgAccent} ${isDarkMode ? 'text-black shadow-accent/40' : 'text-white shadow-blue-600/40'} py-8 rounded-[2rem] font-black text-xl uppercase tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all mt-6 shine-effect`}>
+              <button type="submit" className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-8 rounded-[2rem] font-black text-xl uppercase tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all mt-6 shine-effect`}>
                 Request Clearance
               </button>
             </form>

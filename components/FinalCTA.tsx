@@ -46,7 +46,7 @@ const FinalCTA: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
            <div className="flex -space-x-6">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className={`w-20 h-20 rounded-full border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'} bg-gray-800 shadow-2xl overflow-hidden animate-float`} style={{ animationDelay: `${i * 0.4}s` }}>
-                  <img src={`https://i.pravatar.cc/200?img=${i + 45}`} alt="User" className="w-full h-full object-cover" />
+                  <img src={`https://i.pravatar.cc/200?img=${i + 45}`} alt={`Agent testimonial ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
                 </div>
               ))}
               <div className={`w-20 h-20 rounded-full border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'} ${bgAccent} flex items-center justify-center shadow-2xl z-10 animate-pulse`}>

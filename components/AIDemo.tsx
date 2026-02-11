@@ -88,7 +88,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <div>
             <div className={`inline-flex items-center space-x-3 px-4 py-2 mb-8 border ${borderColor} rounded-xl glass-card`}>
-              <span className={`w-2.5 h-2.5 rounded-full ${isDarkMode ? 'bg-accent' : 'bg-blue-600'} animate-pulse shadow-[0_0_12px_var(--accent-glow)]`}></span>
+              <span className={`w-2.5 h-2.5 rounded-full ${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} animate-pulse shadow-[0_0_12px_rgba(0,209,255,0.4)]`}></span>
               <span className={`text-[10px] font-black uppercase tracking-[0.4em] ${textColor}`}>Intelligence Node 5.0 LIVE</span>
             </div>
             <h2 className={`text-6xl md:text-8xl font-black mb-10 leading-[0.85] tracking-tighter ${headingColor}`}>
@@ -109,7 +109,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                 <div className="flex items-center space-x-4">
                   <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${textColor} opacity-60`}>Audio Dispatch 0x7F</span>
                   <div className="w-12 h-4 flex space-x-0.5 items-end">
-                    {[1,2,3,4,5,6].map(i => <div key={i} className={`w-1 ${isDarkMode ? 'bg-accent' : 'bg-blue-600'} rounded-full animate-bounce`} style={{ height: `${Math.random() * 100}%`, animationDelay: `${i * 0.1}s` }}></div>)}
+                    {[1,2,3,4,5,6].map(i => <div key={i} className={`w-1 ${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} rounded-full animate-bounce`} style={{ height: `${Math.random() * 100}%`, animationDelay: `${i * 0.1}s` }}></div>)}
                   </div>
                 </div>
               </div>
@@ -120,7 +120,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                    <span className={accentColor}>82% Optimal</span>
                 </div>
                 <div className={`h-2 ${isDarkMode ? 'bg-white/5' : 'bg-slate-200'} rounded-full overflow-hidden p-0.5`}>
-                  <div className={`${isDarkMode ? 'bg-accent' : 'bg-blue-600'} h-full rounded-full w-[82%] shadow-[0_0_15px_var(--accent-glow)]`}></div>
+                  <div className={`${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} h-full rounded-full w-[82%] shadow-[0_0_15px_rgba(0,209,255,0.4)]`}></div>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
 
           <div className={`${isDarkMode ? 'bg-[#050505]' : 'bg-white'} border-4 ${borderColor} rounded-[4rem] p-10 md:p-16 relative shadow-[0_60px_120px_-20px_rgba(0,0,0,0.7)] glass-card group overflow-hidden`}>
              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-             <div className={`absolute -top-6 left-1/2 -translate-x-1/2 ${isDarkMode ? 'bg-accent text-black' : 'bg-blue-600 text-white'} px-10 py-4 rounded-2xl font-black text-[11px] shadow-2xl tracking-[0.5em] border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'}`}>
+             <div className={`absolute -top-6 left-1/2 -translate-x-1/2 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-blue-600 text-white'} px-10 py-4 rounded-2xl font-black text-[11px] shadow-2xl tracking-[0.5em] border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'}`}>
                NEURAL SCANNER
              </div>
              
@@ -159,7 +159,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                  <button 
                   onClick={analyzeLead}
                   disabled={loading}
-                  className={`absolute bottom-8 right-8 ${isDarkMode ? 'bg-accent text-black shadow-accent/40' : 'bg-blue-600 text-white shadow-blue-600/40'} p-6 rounded-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all disabled:opacity-50 shine-effect`}
+                  className={`absolute bottom-8 right-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-blue-600 text-white'} p-6 rounded-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all disabled:opacity-50 shine-effect`}
                  >
                    {loading ? (
                      <div className="w-6 h-6 border-4 border-current border-t-transparent rounded-full animate-spin"></div>
@@ -191,7 +191,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
              ) : (
                <div className="flex flex-col items-center justify-center py-24 border-4 border-dashed border-white/5 rounded-[3rem] opacity-30 group-hover:opacity-50 transition-opacity">
                   <div className={`w-16 h-16 rounded-full border-4 ${isDarkMode ? 'border-accent/20' : 'border-blue-600/20'} flex items-center justify-center mb-6`}>
-                    <div className={`w-3 h-3 rounded-full ${isDarkMode ? 'bg-accent' : 'bg-blue-600'} animate-ping`}></div>
+                    <div className={`w-3 h-3 rounded-full ${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} animate-ping`}></div>
                   </div>
                   <p className="font-black text-sm uppercase tracking-[0.4em]">Awaiting Lead Frequency</p>
                </div>

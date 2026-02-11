@@ -38,7 +38,7 @@ const InvestorDeck: React.FC<Props> = ({ isDarkMode }) => {
             </p>
             <div className="grid grid-cols-2 gap-12">
               {metrics.map((m, i) => (
-                <div key={i} className={`border-l-4 ${isDarkMode ? 'border-accent' : 'border-blue-600'} pl-8 group hover:translate-x-2 transition-transform`}>
+                <div key={i} className={`border-l-4 ${isDarkMode ? 'border-[#00D1FF]' : 'border-blue-600'} pl-8 group hover:translate-x-2 transition-transform`}>
                   <p className={`text-5xl font-black ${headingColor} mb-2`}>{m.val}</p>
                   <p className={`text-[11px] font-black uppercase tracking-widest ${textColor} opacity-60`}>{m.sub}</p>
                 </div>
@@ -59,13 +59,13 @@ const InvestorDeck: React.FC<Props> = ({ isDarkMode }) => {
                   ].map((text, i) => (
                     <div key={i} className="flex items-start space-x-6 group">
                       <div className={`w-10 h-10 rounded-2xl ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-100 border-blue-200'} border flex items-center justify-center flex-shrink-0 mt-1 transition-transform group-hover:rotate-12`}>
-                        <div className={`w-3 h-3 rounded-full ${isDarkMode ? 'bg-accent' : 'bg-blue-600'} shadow-[0_0_10px_var(--accent-glow)]`}></div>
+                        <div className={`w-3 h-3 rounded-full ${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} shadow-[0_0_10px_rgba(0,209,255,0.4)]`}></div>
                       </div>
                       <p className={`text-lg font-bold ${textColor} leading-relaxed`}>{text}</p>
                     </div>
                   ))}
                 </div>
-                <button className={`w-full mt-14 py-8 ${isDarkMode ? 'bg-accent text-black shadow-accent/40' : 'bg-slate-900 text-white shadow-slate-900/40'} rounded-[2rem] font-black text-xl uppercase tracking-widest hover:scale-[1.02] transition-all shadow-2xl shine-effect`}>
+                <button className={`w-full mt-14 py-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-slate-900 text-white'} rounded-[2rem] font-black text-xl uppercase tracking-widest hover:scale-[1.02] transition-all shadow-2xl shine-effect`}>
                   Download Pitch Deck (PDF)
                 </button>
              </div>

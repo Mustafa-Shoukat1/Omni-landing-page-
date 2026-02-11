@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -9,12 +9,19 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme, navigate, currentPage }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   const accentColor = isDarkMode ? 'text-[#00D1FF]' : 'text-[#2563EB]';
   const bgAccent = isDarkMode ? 'bg-[#00D1FF]' : 'bg-[#2563EB]';
   const bgColor = isDarkMode ? 'bg-[#0A0A0A]/80' : 'bg-[#F8FAFC]/90';
   const borderColor = isDarkMode ? 'border-white/5' : 'border-blue-100';
   const textColor = isDarkMode ? 'text-gray-400' : 'text-slate-600';
   const navTextColor = isDarkMode ? 'text-white' : 'text-slate-900';
+
+  const handleNavClick = (action: () => void) => {
+    action();
+    setMobileMenuOpen(false);
+  };
 
   return (
     <nav className={`sticky top-0 z-50 ${bgColor} backdrop-blur-md border-b ${borderColor} py-4 theme-transition`}>
@@ -73,14 +80,64 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme, navigate, curr
               <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
             )}
           </button>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`lg:hidden p-2 rounded-xl border ${borderColor} ${isDarkMode ? 'hover:bg-white/10' : 'hover:bg-blue-50'} transition-all`}
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? (
+              <svg className={`w-6 h-6 ${navTextColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className={`w-6 h-6 ${navTextColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+          
           <button 
             onClick={() => navigate('get-offer')}
-            className={`${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} px-6 py-2.5 rounded-xl text-xs font-black transition-all shadow-xl hover:scale-105 active:scale-95 uppercase tracking-widest`}
+            className={`hidden sm:block ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} px-6 py-2.5 rounded-xl text-xs font-black transition-all shadow-xl hover:scale-105 active:scale-95 uppercase tracking-widest`}
           >
             Get Offer
           </button>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className={`lg:hidden ${isDarkMode ? 'bg-[#0A0A0A]' : 'bg-white'} border-t ${borderColor} py-6 px-6 animate-in slide-in-from-top-2 duration-200`}>
+          <div className={`flex flex-col space-y-4 text-sm font-black uppercase tracking-widest ${textColor}`}>
+            <button 
+              onClick={() => handleNavClick(() => { navigate('home'); setTimeout(() => document.getElementById('demo')?.scrollIntoView({behavior:'smooth'}), 100); })}
+              className={`text-left py-3 px-4 rounded-xl ${isDarkMode ? 'hover:bg-white/5' : 'hover:bg-blue-50'} transition-colors`}
+            >
+              The Demo
+            </button>
+            <button 
+              onClick={() => handleNavClick(() => { navigate('home'); setTimeout(() => document.getElementById('systems')?.scrollIntoView({behavior:'smooth'}), 100); })}
+              className={`text-left py-3 px-4 rounded-xl ${isDarkMode ? 'hover:bg-white/5' : 'hover:bg-blue-50'} transition-colors`}
+            >
+              Systems
+            </button>
+            <button 
+              onClick={() => handleNavClick(() => { navigate('home'); setTimeout(() => document.getElementById('roi')?.scrollIntoView({behavior:'smooth'}), 100); })}
+              className={`text-left py-3 px-4 rounded-xl ${isDarkMode ? 'hover:bg-white/5' : 'hover:bg-blue-50'} transition-colors`}
+            >
+              ROI Matrix
+            </button>
+            <button 
+              onClick={() => handleNavClick(() => navigate('get-offer'))}
+              className={`${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-4 rounded-xl text-center font-black transition-all shadow-xl mt-4`}
+            >
+              Get Offer
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

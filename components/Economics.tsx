@@ -36,7 +36,7 @@ const Economics: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                   <span className={textColor}>Manual Labor</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-accent rounded-full shadow-[0_0_10px_rgba(0,209,255,0.5)]"></div>
+                  <div className={`w-3 h-3 ${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} rounded-full shadow-[0_0_10px_rgba(0,209,255,0.5)]`}></div>
                   <span className={textColor}>AI Infrastructure</span>
                 </div>
               </div>
