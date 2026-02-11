@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Props {
   isDarkMode: boolean;
@@ -7,6 +7,23 @@ interface Props {
 }
 
 const Economics: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const section = document.getElementById('roi');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
   const bgColor = isDarkMode ? 'bg-[#0F0F0F]' : 'bg-slate-50';
   const headingColor = isDarkMode ? 'text-white' : 'text-slate-900';
   const accentColor = isDarkMode ? 'text-[#00D1FF]' : 'text-[#2563EB]';
@@ -45,52 +62,174 @@ const Economics: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
             {/* Railroad Track Grid Graph */}
             <div className="relative h-80 w-full mb-10">
               <svg className="w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor={isDarkMode ? "#00D1FF" : "#2563EB"} stopOpacity="0.3" />
+                    <stop offset="100%" stopColor={isDarkMode ? "#00D1FF" : "#2563EB"} stopOpacity="1" />
+                  </linearGradient>
+                  <linearGradient id="manualGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#EF4444" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#EF4444" stopOpacity="1" />
+                  </linearGradient>
+                </defs>
+                
                 {/* Horizontal Tracks */}
-                {[0, 0.25, 0.5, 0.75, 1].map(p => (
-                  <line key={p} x1="0" y1={`${p * 100}%`} x2="100%" y2={`${p * 100}%`} stroke={isDarkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.1)"} strokeWidth="2" />
+                {[0, 0.25, 0.5, 0.75, 1].map((p, i) => (
+                  <line 
+                    key={p} 
+                    x1="0" 
+                    y1={`${p * 100}%`} 
+                    x2="100%" 
+                    y2={`${p * 100}%`} 
+                    stroke={isDarkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.1)"} 
+                    strokeWidth="2"
+                    style={{
+                      opacity: isVisible ? 1 : 0,
+                      transition: `opacity 0.5s ease ${i * 0.1}s`
+                    }}
+                  />
                 ))}
                 
                 {/* Manual Path (Derailing) */}
                 <path 
                   d="M0,280 C100,260 200,100 400,0" 
                   fill="none" 
-                  stroke="#EF4444" 
+                  stroke="url(#manualGradient)" 
                   strokeWidth="6" 
                   strokeDasharray="10 5"
                   className="drop-shadow-[0_0_12px_rgba(239,68,68,0.3)]"
+                  style={{
+                    strokeDashoffset: isVisible ? 0 : 500,
+                    transition: 'stroke-dashoffset 2s ease-out 0.5s'
+                  }}
                 />
                 
                 {/* Omni System Path (The Straight Rail) */}
                 <path 
                   d="M0,280 C150,290 300,240 600,200" 
                   fill="none" 
-                  stroke={isDarkMode ? "#00D1FF" : "#2563EB"} 
+                  stroke="url(#aiGradient)" 
                   strokeWidth="8" 
+                  strokeLinecap="round"
                   className={isDarkMode ? 'drop-shadow-[0_0_15px_rgba(0,209,255,0.4)]' : 'drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]'}
+                  style={{
+                    strokeDasharray: 700,
+                    strokeDashoffset: isVisible ? 0 : 700,
+                    transition: 'stroke-dashoffset 2.5s ease-out 0.3s'
+                  }}
                 />
 
-                <circle cx="0" cy="280" r="8" fill={isDarkMode ? "#00D1FF" : "#2563EB"} />
-                <circle cx="100%" cy="200" r="10" fill={isDarkMode ? "#00D1FF" : "#2563EB"} className="animate-pulse" />
+                {/* Animated data points along AI path */}
+                <circle 
+                  cx="0" 
+                  cy="280" 
+                  r="8" 
+                  fill={isDarkMode ? "#00D1FF" : "#2563EB"}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'scale(1)' : 'scale(0)',
+                    transition: 'all 0.5s ease 0.3s'
+                  }}
+                />
+                <circle 
+                  cx="33%" 
+                  cy="270" 
+                  r="6" 
+                  fill={isDarkMode ? "#00D1FF" : "#2563EB"}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'scale(1)' : 'scale(0)',
+                    transition: 'all 0.5s ease 1s'
+                  }}
+                />
+                <circle 
+                  cx="66%" 
+                  cy="230" 
+                  r="6" 
+                  fill={isDarkMode ? "#00D1FF" : "#2563EB"}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'scale(1)' : 'scale(0)',
+                    transition: 'all 0.5s ease 1.5s'
+                  }}
+                />
+                <circle 
+                  cx="100%" 
+                  cy="200" 
+                  r="10" 
+                  fill={isDarkMode ? "#00D1FF" : "#2563EB"} 
+                  className="animate-pulse"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'scale(1)' : 'scale(0)',
+                    transition: 'all 0.5s ease 2s'
+                  }}
+                />
+                
+                {/* Animated glow effect on end point */}
+                <circle 
+                  cx="100%" 
+                  cy="200" 
+                  r="20" 
+                  fill={isDarkMode ? "#00D1FF" : "#2563EB"}
+                  opacity="0.2"
+                  className="animate-ping"
+                  style={{
+                    animationDuration: '2s'
+                  }}
+                />
               </svg>
               
-              <div className="absolute top-0 right-0 -translate-y-8 text-[11px] font-black text-red-500 uppercase tracking-widest">Inefficiency Spike +300%</div>
-              <div className={`absolute bottom-12 right-1/4 p-4 ${isDarkMode ? 'bg-accent/10' : 'bg-blue-600/10'} rounded-2xl border border-accent/20`}>
+              <div 
+                className="absolute top-0 right-0 -translate-y-8 text-[11px] font-black text-red-500 uppercase tracking-widest"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(-32px)' : 'translateY(-20px)',
+                  transition: 'all 0.5s ease 1.5s'
+                }}
+              >
+                Inefficiency Spike +300%
+              </div>
+              <div 
+                className={`absolute bottom-12 right-1/4 p-4 ${isDarkMode ? 'bg-accent/10' : 'bg-blue-600/10'} rounded-2xl border border-accent/20`}
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'scale(1)' : 'scale(0.8)',
+                  transition: 'all 0.5s ease 2s'
+                }}
+              >
                  <p className={`text-[11px] font-black ${accentColor} uppercase tracking-widest`}>Scale Route Locked</p>
               </div>
             </div>
 
             <div className={`flex justify-between text-[11px] font-black ${textColor} uppercase tracking-[0.4em] pt-8 border-t ${borderColor}`}>
-              <span>2020</span>
-              <span>2022</span>
-              <span>2024</span>
-              <span>Unlimited Exit</span>
+              <span style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.5s ease 0.5s' }}>Nov 2025</span>
+              <span style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.5s ease 1s' }}>Dec 2025</span>
+              <span style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.5s ease 1.5s' }}>Jan 2026</span>
+              <span style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.5s ease 2s' }}>Feb 2026</span>
             </div>
           </div>
 
           <div className="lg:col-span-5 space-y-10">
-            <div className={`${cardBg} p-10 rounded-[3rem] border ${borderColor} shadow-2xl relative group overflow-hidden glass-card`}>
+            <div 
+              className={`${cardBg} p-10 rounded-[3rem] border ${borderColor} shadow-2xl relative group overflow-hidden glass-card`}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateX(0)' : 'translateX(50px)',
+                transition: 'all 0.8s ease 0.5s'
+              }}
+            >
               <div className={`absolute -right-12 -top-12 w-32 h-32 ${isDarkMode ? 'bg-accent/10' : 'bg-blue-600/5'} blur-3xl group-hover:opacity-100 opacity-50 transition-all`}></div>
-              <h4 className={`text-7xl font-black ${accentColor} mb-4 tracking-tighter`}>68%</h4>
+              <h4 
+                className={`text-7xl font-black ${accentColor} mb-4 tracking-tighter`}
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'scale(1)' : 'scale(0.5)',
+                  transition: 'all 0.6s ease 1s'
+                }}
+              >
+                68%
+              </h4>
               <p className={`text-xs font-black ${isDarkMode ? 'text-gray-300' : 'text-slate-500'} uppercase tracking-[0.3em] mb-6`}>Market Failure Rate</p>
               <p className={`text-xl ${textColor} leading-relaxed font-bold tracking-tight`}>
                 Of Realtors struggle with inconsistent sales because they lack a predictable system. Leverage the machine.
@@ -100,6 +239,11 @@ const Economics: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
             <div 
               onClick={onCtaClick}
               className={`${isDarkMode ? 'bg-white text-black shadow-accent/20' : 'bg-slate-900 text-white shadow-slate-900/20'} p-10 rounded-[3rem] shadow-2xl transform hover:scale-[1.02] transition-all cursor-pointer group shine-effect`}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateX(0)' : 'translateX(50px)',
+                transition: 'all 0.8s ease 0.8s'
+              }}
             >
               <p className="text-sm font-black uppercase tracking-[0.3em] mb-4 opacity-60">The Outcome</p>
               <h4 className="text-4xl font-black leading-tight mb-8 tracking-tighter">Establish Territorial Dominance.</h4>
