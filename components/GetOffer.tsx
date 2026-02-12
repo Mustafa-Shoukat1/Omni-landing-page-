@@ -7,6 +7,8 @@ interface Props {
 
 const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   
   const headingColor = isDarkMode ? 'text-white' : 'text-slate-900';
   const textColor = isDarkMode ? 'text-gray-400' : 'text-slate-600';
@@ -16,9 +18,32 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
   const accentColor = isDarkMode ? 'text-[#00D1FF]' : 'text-[#2563EB]';
   const bgAccent = isDarkMode ? 'bg-[#00D1FF]' : 'bg-[#2563EB]';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError('');
+    
+    const formData = new FormData(e.currentTarget);
+    formData.append('access_key', 'YOUR_WEB3FORMS_KEY'); // Replace with actual key
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Network error. Please check your connection.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -81,32 +106,37 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Agent Identifier</label>
-                  <input required type="text" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Full Name" />
+                  <input required type="text" name="name" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Full Name" />
                 </div>
                 <div className="space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Communication</label>
-                  <input required type="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Email Address" />
+                  <input required type="email" name="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Email Address" />
                 </div>
               </div>
               <div className="space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Phone Number</label>
-                <input required type="tel" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="(555) 123-4567" />
+                <input required type="tel" name="phone" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="(555) 123-4567" />
               </div>
               <div className="space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Target Market</label>
-                <input required type="text" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="City, State or Zip Code" />
+                <input required type="text" name="market" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="City, State or Zip Code" />
               </div>
               <div className="space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Current Yield</label>
-                <select className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold shadow-inner`}>
+                <select name="deals" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold shadow-inner`}>
                   <option>0-2 Deals / Month</option>
                   <option>3-5 Deals / Month</option>
                   <option>5-10 Deals / Month</option>
                   <option>10+ Deals / Month</option>
                 </select>
               </div>
-              <button type="submit" className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:scale-105 active:scale-95 transition-all mt-4 shine-effect`}>
-                Request Clearance
+              {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:scale-105 active:scale-95 transition-all mt-4 shine-effect disabled:opacity-50 disabled:cursor-not-allowed`}
+              >
+                {isSubmitting ? 'Processing...' : 'Request Clearance'}
               </button>
             </form>
           </div>

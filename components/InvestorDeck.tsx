@@ -65,9 +65,12 @@ const InvestorDeck: React.FC<Props> = ({ isDarkMode }) => {
                     </div>
                   ))}
                 </div>
-                <button className={`w-full mt-14 py-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-slate-900 text-white'} rounded-[2rem] font-black text-xl uppercase tracking-widest hover:scale-[1.02] transition-all shadow-2xl shine-effect`}>
-                  Download Pitch Deck (PDF)
-                </button>
+                <a 
+                  href="mailto:investors@omnipresentagent.com?subject=Pitch%20Deck%20Request&body=Hi%2C%20I%20am%20interested%20in%20receiving%20the%20Omnipresent%20Agent%20pitch%20deck.%20Please%20send%20it%20to%20this%20email.%20Thank%20you!" 
+                  className={`block w-full mt-14 py-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-slate-900 text-white'} rounded-[2rem] font-black text-xl uppercase tracking-widest hover:scale-[1.02] transition-all shadow-2xl shine-effect text-center`}
+                >
+                  Request Pitch Deck
+                </a>
              </div>
           </div>
         </div>

@@ -153,7 +153,7 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                  <textarea 
                    value={userInput}
                    onChange={(e) => setUserInput(e.target.value)}
-                   className={`w-full h-48 ${isDarkMode ? 'bg-black border-white/10' : 'bg-slate-50 border-blue-100'} border-2 rounded-[2.5rem] p-10 ${headingColor} placeholder-gray-700 focus:outline-none focus:border-accent/50 transition-all resize-none text-xl font-bold shadow-inner`}
+                   className={`w-full h-48 ${isDarkMode ? 'bg-black border-white/10' : 'bg-slate-50 border-blue-100'} border-2 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 ${headingColor} placeholder-gray-700 focus:outline-none focus:border-accent/50 transition-all resize-none text-base sm:text-xl font-bold shadow-inner`}
                    placeholder="Try: 'I saw your listing on Main St, I'm ready to sell my current home in Malibu ASAP...'"
                  />
                  <button 

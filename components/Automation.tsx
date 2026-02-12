@@ -21,9 +21,9 @@ const Automation: React.FC<Props> = ({ isDarkMode }) => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-24">
           <div className="lg:w-1/2 order-2 lg:order-1 relative">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {/* Mock SMS Interface 1 */}
-              <div className={`${cardBg} rounded-[2.5rem] p-8 border ${borderColor} shadow-2xl transform -rotate-2 hover:rotate-0 transition-all duration-700 glass-card scale-105 z-20`}>
+              <div className={`${cardBg} rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border ${borderColor} shadow-2xl transform sm:-rotate-2 hover:rotate-0 transition-all duration-700 glass-card sm:scale-105 z-20`}>
                 <div className="flex items-center space-x-4 mb-8">
                   <div className={`w-10 h-10 rounded-xl ${isDarkMode ? 'bg-accent/20' : 'bg-blue-600/20'} flex items-center justify-center border ${isDarkMode ? 'border-accent/40' : 'border-blue-600/40'}`}>
                     <span className={`${accentColor} text-xs font-black`}>AI</span>
@@ -47,7 +47,7 @@ const Automation: React.FC<Props> = ({ isDarkMode }) => {
               </div>
 
               {/* Mock SMS Interface 2 */}
-              <div className={`${cardBg} rounded-[2.5rem] p-8 border ${borderColor} shadow-2xl transform rotate-3 translate-y-16 hover:rotate-0 transition-all duration-700 glass-card`}>
+              <div className={`${cardBg} rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border ${borderColor} shadow-2xl transform sm:rotate-3 sm:translate-y-16 hover:rotate-0 transition-all duration-700 glass-card`}>
                 <div className="flex items-center space-x-4 mb-8">
                   <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center border border-purple-500/40">
                     <span className="text-purple-500 text-xs font-black">SYS</span>

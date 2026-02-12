@@ -70,9 +70,9 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
                 <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
                   <div 
                     onClick={() => setShowVideo(true)}
-                    className={`group/play ${bgAccent} ${isDarkMode ? 'text-black shadow-accent/40' : 'text-white shadow-blue-600/40'} p-10 rounded-full cursor-pointer hover:scale-110 transition-all shadow-2xl shine-effect border-4 border-white/20`}
+                    className={`group/play ${bgAccent} ${isDarkMode ? 'text-black shadow-accent/40' : 'text-white shadow-blue-600/40'} p-5 sm:p-8 md:p-10 rounded-full cursor-pointer hover:scale-110 transition-all shadow-2xl shine-effect border-2 sm:border-4 border-white/20`}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-12 h-12">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12">
                       <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
                     </svg>
                   </div>

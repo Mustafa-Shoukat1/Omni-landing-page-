@@ -47,12 +47,18 @@ const SupportJunction: React.FC<Props> = ({ isDarkMode }) => {
           <h3 className={`text-4xl md:text-6xl font-black mb-8 ${headingColor} tracking-tight`}>Connect with a Technician</h3>
           <p className={`${textColor} mb-12 text-xl font-medium max-w-2xl mx-auto`}>Operational hours: 24/7 for Enterprise Node holders. High-priority dispatch active.</p>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8">
-            <button className={`${isDarkMode ? 'bg-[#00D1FF] text-black shadow-accent/40' : 'bg-[#2563EB] text-white shadow-blue-600/40'} px-14 py-6 rounded-2xl font-black uppercase tracking-widest shadow-2xl hover:scale-105 transition-all shine-effect`}>
+            <a 
+              href="mailto:support@omnipresentagent.com?subject=Support%20Ticket%20Request" 
+              className={`${isDarkMode ? 'bg-[#00D1FF] text-black shadow-accent/40' : 'bg-[#2563EB] text-white shadow-blue-600/40'} px-14 py-6 rounded-2xl font-black uppercase tracking-widest shadow-2xl hover:scale-105 transition-all shine-effect`}
+            >
               Open Ticket
-            </button>
-            <button className={`${isDarkMode ? 'bg-white text-black' : 'bg-white border-slate-200 text-slate-900'} px-14 py-6 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl`}>
+            </a>
+            <a 
+              href="mailto:support@omnipresentagent.com?subject=Live%20Chat%20Request" 
+              className={`${isDarkMode ? 'bg-white text-black' : 'bg-white border-slate-200 text-slate-900'} px-14 py-6 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl`}
+            >
               Live Chat
-            </button>
+            </a>
           </div>
         </div>
       </div>
