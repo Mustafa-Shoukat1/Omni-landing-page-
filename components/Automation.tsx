@@ -79,10 +79,10 @@ const Automation: React.FC<Props> = ({ isDarkMode }) => {
             <div className={`inline-block px-4 py-2 mb-8 border ${isDarkMode ? 'border-accent/30 bg-accent/10' : 'border-blue-600/30 bg-blue-600/5'} rounded-xl`}>
               <span className={`${accentColor} text-[10px] font-black tracking-[0.4em] uppercase`}>Scale Architecture</span>
             </div>
-            <h2 className={`text-5xl md:text-7xl font-black mb-10 leading-[0.95] tracking-tighter ${headingColor}`}>
-              BUILT FOR <span className={`${accentColor} italic`}>VELOCITY</span>.
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight ${headingColor}`}>
+              Built For <span className={`${accentColor}`}>Velocity</span>
             </h2>
-            <p className={`text-xl ${textColor} mb-12 leading-relaxed font-medium`}>
+            <p className={`text-base sm:text-lg ${textColor} mb-8 leading-relaxed font-medium`}>
               Real estate isn't a hobby—it's infrastructure. We replace the messy "human dialer" bottleneck with a high-throughput AI engine that never eats, never sleeps, and never misses a follow-up.
             </p>
             <div className="space-y-8">

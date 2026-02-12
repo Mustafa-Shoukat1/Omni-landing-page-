@@ -31,31 +31,31 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
       
       <div className="container mx-auto px-6 text-center">
         {/* Social Proof Ticker */}
-        <div className={`inline-flex items-center space-x-4 px-8 py-3 mb-12 border ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-blue-100 bg-blue-50'} rounded-full glass-card shadow-2xl animate-float`}>
-          <div className="flex -space-x-3">
+        <div className={`inline-flex flex-wrap items-center justify-center gap-3 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 mb-8 border ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-blue-100 bg-blue-50'} rounded-full glass-card shadow-lg`}>
+          <div className="flex -space-x-2">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className={`w-8 h-8 rounded-full border-2 ${isDarkMode ? 'border-black' : 'border-white'} bg-gray-600 shadow-lg overflow-hidden`}>
+              <div key={i} className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 ${isDarkMode ? 'border-black' : 'border-white'} bg-gray-600 shadow-md overflow-hidden`}>
                 <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt={`Satisfied customer ${i}`} loading="lazy" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
-          <div className="h-4 w-px bg-gray-700/50"></div>
-          <span className={`${isDarkMode ? 'text-white' : 'text-slate-900'} text-[11px] font-black tracking-[0.3em] uppercase`}>
+          <div className="h-4 w-px bg-gray-700/50 hidden sm:block"></div>
+          <span className={`${isDarkMode ? 'text-white' : 'text-slate-900'} text-[10px] sm:text-xs font-semibold tracking-wide`}>
             Live Yield: <span className={accentColor}>$124,502,192</span> Generated
           </span>
           <div className="w-2 h-2 rounded-full bg-green-500 animate-ping"></div>
         </div>
         
-        <h1 className={`text-6xl md:text-8xl lg:text-[10rem] font-black mb-10 max-w-7xl mx-auto leading-[0.85] ${headingColor} tracking-tighter`}>
-          OWN YOUR <br /><span className={`${accentColor} italic`}>MARKET RAIL.</span>
+        <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-5xl mx-auto leading-tight ${headingColor} tracking-tight`}>
+          Own Your <br /><span className={`${accentColor}`}>Market Rail</span>
         </h1>
         
-        <p className={`text-xl md:text-3xl ${textColor} mb-16 max-w-3xl mx-auto font-bold leading-tight tracking-tight`}>
-          Stop chasing leads. Install the infrastructure that <span className={isDarkMode ? 'text-white' : 'text-slate-900'}>hunts them for you</span>—24 hours a day, at scale.
+        <p className={`text-base sm:text-lg md:text-xl ${textColor} mb-10 max-w-2xl mx-auto font-medium leading-relaxed`}>
+          Stop chasing leads. Install the infrastructure that <span className={isDarkMode ? 'text-white' : 'text-slate-900'}>hunts them for you</span> 24 hours a day, at scale
         </p>
         
         {/* Video Container with Crystalline Border */}
-        <div className="relative group max-w-6xl mx-auto mb-20 animate-float" style={{ animationDelay: '0.5s' }}>
+        <div className="relative group max-w-4xl mx-auto mb-12 sm:mb-16" style={{ animationDelay: '0.5s' }}>
           <div className={`absolute -inset-1 bg-gradient-to-r ${isDarkMode ? 'from-accent/40 via-purple-600/30 to-accent/40' : 'from-blue-400/20 via-indigo-200 to-blue-400/20'} rounded-[3rem] blur-xl opacity-30 group-hover:opacity-60 transition duration-1000`}></div>
           
           <div className={`relative ${isDarkMode ? 'bg-[#050505]' : 'bg-white'} rounded-[2.5rem] aspect-video border ${isDarkMode ? 'border-white/20' : 'border-blue-100'} shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] overflow-hidden glass-card`}>
@@ -85,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
             ) : (
               <iframe 
                 className="w-full h-full border-0"
-                src={`https://www.youtube.com/embed/UmIxZatAqwY?autoplay=1&mute=1&controls=1&modestbranding=1&enablejsapi=1&widgetapi=1&origin=${encodeURIComponent(origin)}`} 
+                src={`https://www.youtube.com/embed/UmIxZatAqwY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1&widgetapi=1&origin=${encodeURIComponent(origin)}`} 
                 title="Omnipresent Agent Demo" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowFullScreen
@@ -96,7 +96,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
 
         <button 
           onClick={onCtaClick}
-          className={`${bgAccent} ${isDarkMode ? 'text-black shadow-accent/30' : 'text-white shadow-blue-600/30'} hover:scale-105 active:scale-95 px-16 py-8 rounded-[2.5rem] text-2xl font-black transition-all shadow-2xl uppercase tracking-[0.2em] shine-effect mb-8`}
+          className={`${bgAccent} ${isDarkMode ? 'text-black shadow-accent/30' : 'text-white shadow-blue-600/30'} hover:scale-105 active:scale-95 px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold transition-all shadow-xl tracking-wide shine-effect mb-6`}
         >
           Check Zip Availability
         </button>

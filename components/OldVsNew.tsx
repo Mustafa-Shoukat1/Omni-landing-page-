@@ -29,8 +29,8 @@ const OldVsNew: React.FC<Props> = ({ isDarkMode }) => {
   return (
     <section className={`py-32 ${bgColor} theme-transition relative overflow-hidden`}>
       <div className="container mx-auto px-6 relative z-10">
-        <h2 className={`text-5xl md:text-7xl font-black text-center mb-20 max-w-4xl mx-auto tracking-tighter ${headingColor} leading-none`}>
-          STOP THE <span className="text-red-500 italic">BURN OUT</span>. <br />EMBRACE THE MACHINE.
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 sm:mb-16 max-w-4xl mx-auto tracking-tight ${headingColor} leading-tight`}>
+          Stop the <span className="text-red-500">Burnout</span>. <br />Embrace the Machine.
         </h2>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">

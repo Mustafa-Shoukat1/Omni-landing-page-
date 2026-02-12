@@ -38,8 +38,8 @@ const Economics: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
           <div className={`inline-block px-4 py-1.5 mb-6 border ${isDarkMode ? 'border-accent/30 bg-accent/5' : 'border-blue-200 bg-blue-50'} rounded-full`}>
             <span className={`${accentColor} text-[10px] font-black tracking-widest uppercase`}>Infrastructure Yield Report</span>
           </div>
-          <h2 className={`text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter ${headingColor}`}>
-            The Economics of <br /><span className={`${accentColor} italic`}>Scaling</span>.
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight ${headingColor}`}>
+            The Economics of <br /><span className={`${accentColor}`}>Scaling</span>
           </h2>
         </div>
 

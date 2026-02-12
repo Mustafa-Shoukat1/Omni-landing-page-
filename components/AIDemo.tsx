@@ -91,10 +91,10 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
               <span className={`w-2.5 h-2.5 rounded-full ${isDarkMode ? 'bg-[#00D1FF]' : 'bg-blue-600'} animate-pulse shadow-[0_0_12px_rgba(0,209,255,0.4)]`}></span>
               <span className={`text-[10px] font-black uppercase tracking-[0.4em] ${textColor}`}>Intelligence Node 5.0 LIVE</span>
             </div>
-            <h2 className={`text-6xl md:text-8xl font-black mb-10 leading-[0.85] tracking-tighter ${headingColor}`}>
-              THE BRAIN <br /><span className={`${accentColor} italic`}>BEHIND THE RAIL.</span>
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight ${headingColor}`}>
+              The Brain <br /><span className={`${accentColor}`}>Behind the Rail</span>
             </h2>
-            <p className={`text-xl md:text-2xl ${textColor} mb-12 font-bold leading-relaxed tracking-tight`}>
+            <p className={`text-base sm:text-lg md:text-xl ${textColor} mb-8 font-medium leading-relaxed`}>
               While competitors are manually dialing, our neural nodes are qualifying intent, booking calls, and calculating the most profitable next move.
             </p>
 
@@ -132,16 +132,16 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
 
             <button 
               onClick={onCtaClick}
-              className={`${isDarkMode ? 'bg-white text-black' : 'bg-slate-900 text-white'} px-16 py-8 rounded-[2rem] text-xl font-black shadow-2xl hover:scale-105 active:scale-95 transition-all uppercase tracking-widest shine-effect`}
+              className={`${isDarkMode ? 'bg-white text-black' : 'bg-slate-900 text-white'} px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold shadow-xl hover:scale-105 active:scale-95 transition-all tracking-wide shine-effect`}
             >
               Get Cleared For Rail
             </button>
           </div>
 
-          <div className={`${isDarkMode ? 'bg-[#050505]' : 'bg-white'} border-4 ${borderColor} rounded-[4rem] p-10 md:p-16 relative shadow-[0_60px_120px_-20px_rgba(0,0,0,0.7)] glass-card group overflow-hidden`}>
+          <div className={`${isDarkMode ? 'bg-[#050505]' : 'bg-white'} border-2 ${borderColor} rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 relative shadow-xl glass-card group overflow-hidden`}>
              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-             <div className={`absolute -top-6 left-1/2 -translate-x-1/2 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-blue-600 text-white'} px-10 py-4 rounded-2xl font-black text-[11px] shadow-2xl tracking-[0.5em] border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'}`}>
-               NEURAL SCANNER
+             <div className={`mb-4 sm:mb-6 ${isDarkMode ? 'text-[#00D1FF]' : 'text-blue-600'} font-bold text-lg sm:text-xl`}>
+               Neural Scanner
              </div>
              
              <div className="mb-12 pt-8">

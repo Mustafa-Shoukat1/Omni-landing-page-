@@ -48,10 +48,10 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
               <span className={`${accentColor} text-[10px] font-black tracking-[0.4em] uppercase`}>Restricted Access</span>
             </div>
-            <h1 className={`text-7xl md:text-9xl font-black mb-10 tracking-[ -0.05em] leading-[0.8] ${headingColor}`}>
-              RESERVE <br /><span className={accentColor}>YOUR RAIL.</span>
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 tracking-tight leading-tight ${headingColor}`}>
+              Reserve <br /><span className={accentColor}>Your Rail</span>
             </h1>
-            <p className={`text-2xl ${textColor} mb-12 leading-relaxed font-medium tracking-tight`}>
+            <p className={`text-base sm:text-lg md:text-xl ${textColor} mb-8 leading-relaxed font-medium`}>
               Territorial exclusivity is non-negotiable. Once a market node is occupied, all growth infrastructure is locked to that partner.
             </p>
             
@@ -62,12 +62,12 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                 { title: "Exclusive Territories", desc: "One top producer per market. Zero overlap." }
               ].map((item, i) => (
                 <div key={i} className="flex items-center space-x-6 group">
-                  <div className={`w-16 h-16 ${isDarkMode ? 'bg-white/5' : 'bg-blue-50'} border ${borderColor} rounded-[2rem] flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-xl`}>
+                  <div className={`w-12 h-12 ${isDarkMode ? 'bg-white/5' : 'bg-blue-50'} border ${borderColor} rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform shadow-lg`}>
                     <div className={`w-2 h-2 rounded-full ${bgAccent}`}></div>
                   </div>
                   <div>
-                    <span className={`text-2xl font-black ${headingColor} block tracking-tight`}>{item.title}</span>
-                    <span className={`text-sm ${textColor} font-medium`}>{item.desc}</span>
+                    <span className={`text-base sm:text-lg font-bold ${headingColor} block`}>{item.title}</span>
+                    <span className={`text-sm ${textColor} font-medium`}>{item.desc}</span></span>
                   </div>
                 </div>
               ))}
@@ -76,7 +76,7 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
 
           <div className={`${cardBg} border-2 ${borderColor} p-10 md:p-16 rounded-[4rem] shadow-2xl glass-card relative`}>
             <div className="absolute top-10 right-10 text-[10px] font-black text-gray-700 tracking-[0.5em] uppercase opacity-40">Form V.7.01</div>
-            <h3 className={`text-3xl font-black mb-12 ${headingColor} tracking-tight`}>Clearance Application</h3>
+            <h3 className={`text-xl sm:text-2xl font-bold mb-8 ${headingColor}`}>Clearance Application</h3>
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
@@ -105,7 +105,7 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                   <option>10+ Deals / Month</option>
                 </select>
               </div>
-              <button type="submit" className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-8 rounded-[2rem] font-black text-xl uppercase tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all mt-6 shine-effect`}>
+              <button type="submit" className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:scale-105 active:scale-95 transition-all mt-4 shine-effect`}>
                 Request Clearance
               </button>
             </form>
