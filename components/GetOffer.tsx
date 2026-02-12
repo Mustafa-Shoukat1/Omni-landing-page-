@@ -67,7 +67,7 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                   </div>
                   <div>
                     <span className={`text-base sm:text-lg font-bold ${headingColor} block`}>{item.title}</span>
-                    <span className={`text-sm ${textColor} font-medium`}>{item.desc}</span></span>
+                    <span className={`text-sm ${textColor} font-medium`}>{item.desc}</span>
                   </div>
                 </div>
               ))}
