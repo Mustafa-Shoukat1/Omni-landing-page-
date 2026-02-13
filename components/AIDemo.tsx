@@ -60,23 +60,9 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
   const [userInput, setUserInput] = useState('');
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioError, setAudioError] = useState(false);
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const [showSDRVideo, setShowSDRVideo] = useState(false);
 
-  const toggleAudio = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.play().catch(() => {
-          setAudioError(true);
-        });
-        setIsPlaying(true);
-      }
-    }
-  };
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   const analyzeLead = async () => {
     if (!userInput.trim()) return;
@@ -141,23 +127,31 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                 </div>
               </div>
 
-              <audio 
-                ref={audioRef} 
-                src="/sdr-call-demo.mp3" 
-                onEnded={() => setIsPlaying(false)}
-                onError={() => setAudioError(true)}
-              />
-              <button 
-                onClick={toggleAudio}
-                className={`w-full py-6 ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-600/10 border-blue-600/30'} border-2 rounded-2xl font-black text-xs uppercase tracking-[0.5em] flex items-center justify-center space-x-4 transition-all ${accentColor} hover:bg-accent/20 hover:scale-[1.02]`}
-              >
-                {isPlaying ? (
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
-                ) : (
+              {!showSDRVideo ? (
+                <button 
+                  onClick={() => setShowSDRVideo(true)}
+                  className={`w-full py-6 ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-600/10 border-blue-600/30'} border-2 rounded-2xl font-black text-xs uppercase tracking-[0.5em] flex items-center justify-center space-x-4 transition-all ${accentColor} hover:bg-accent/20 hover:scale-[1.02]`}
+                >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" /></svg>
-                )}
-                <span>{audioError ? 'Demo Coming Soon' : (isPlaying ? 'Pause Call' : 'Listen to Live SDR Call')}</span>
-              </button>
+                  <span>Watch Live SDR Call Demo</span>
+                </button>
+              ) : (
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-accent/30">
+                  <iframe 
+                    className="w-full h-full border-0"
+                    src={`https://www.youtube.com/embed/Zs60_ssuN6Y?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0&enablejsapi=1&origin=${encodeURIComponent(origin)}`} 
+                    title="Live SDR Call Demo" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                  ></iframe>
+                  <button 
+                    onClick={() => setShowSDRVideo(false)}
+                    className="absolute top-2 right-2 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                  </button>
+                </div>
+              )}
             </div>
 
             <button 
