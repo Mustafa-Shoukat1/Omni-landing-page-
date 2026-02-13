@@ -1,3 +1,14 @@
+/**
+ * Hero Component
+ * 
+ * Main landing section with:
+ * - Animated headline and tagline
+ * - YouTube video player with thumbnail preview
+ * - Primary CTA button ("Get Access Now")
+ * - Theme-aware styling (dark/light mode)
+ * 
+ * @component
+ */
 
 import React, { useState, useEffect } from 'react';
 
