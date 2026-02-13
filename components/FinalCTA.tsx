@@ -45,8 +45,10 @@ const FinalCTA: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
         <div className="mt-16 sm:mt-20 flex flex-col items-center justify-center space-y-6 sm:space-y-8">
            <div className="flex -space-x-3 sm:-space-x-4">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 sm:border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'} bg-gray-800 shadow-lg overflow-hidden`} style={{ animationDelay: `${i * 0.4}s` }}>
-                  <img src={`https://i.pravatar.cc/200?img=${i + 45}`} alt={`Agent testimonial ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
+                <div key={i} className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 sm:border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'} bg-gradient-to-br from-blue-400 to-purple-500 shadow-lg flex items-center justify-center`} style={{ animationDelay: `${i * 0.4}s` }}>
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                  </svg>
                 </div>
               ))}
               <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 sm:border-4 ${isDarkMode ? 'border-[#050505]' : 'border-white'} ${bgAccent} flex items-center justify-center shadow-lg z-10`}>

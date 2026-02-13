@@ -45,8 +45,10 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
         <div className={`inline-flex flex-wrap items-center justify-center gap-3 sm:gap-4 px-4 sm:px-6 py-2 sm:py-3 mb-8 border ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-blue-100 bg-blue-50'} rounded-full glass-card shadow-lg`}>
           <div className="flex -space-x-2">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 ${isDarkMode ? 'border-black' : 'border-white'} bg-gray-600 shadow-md overflow-hidden`}>
-                <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt={`Satisfied customer ${i}`} loading="lazy" className="w-full h-full object-cover" />
+              <div key={i} className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 ${isDarkMode ? 'border-black' : 'border-white'} bg-gradient-to-br from-blue-400 to-purple-500 shadow-md flex items-center justify-center`}>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                </svg>
               </div>
             ))}
           </div>

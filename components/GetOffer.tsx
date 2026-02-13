@@ -24,7 +24,15 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
     setError('');
     
     const formData = new FormData(e.currentTarget);
-    formData.append('access_key', 'YOUR_WEB3FORMS_KEY'); // Replace with actual key
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || '';
+    
+    if (!accessKey) {
+      setError('Form configuration error. Please contact support.');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    formData.append('access_key', accessKey);
     
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -110,12 +118,28 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                 </div>
                 <div className="space-y-2 sm:space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Communication</label>
-                  <input required type="email" name="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="Email Address" />
+                  <input 
+                    required 
+                    type="email" 
+                    name="email" 
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="Please enter a valid email address"
+                    className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} 
+                    placeholder="Email Address" 
+                  />
                 </div>
               </div>
               <div className="space-y-2 sm:space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Phone Number</label>
-                <input required type="tel" name="phone" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="(555) 123-4567" />
+                <input 
+                  required 
+                  type="tel" 
+                  name="phone" 
+                  pattern="[0-9\s\-\(\)\+]{7,20}"
+                  title="Please enter a valid phone number"
+                  className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} 
+                  placeholder="(555) 123-4567" 
+                />
               </div>
               <div className="space-y-2 sm:space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Target Market</label>
