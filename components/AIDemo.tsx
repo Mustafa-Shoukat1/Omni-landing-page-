@@ -60,6 +60,23 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
   const [userInput, setUserInput] = useState('');
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioError, setAudioError] = useState(false);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play().catch(() => {
+          setAudioError(true);
+        });
+        setIsPlaying(true);
+      }
+    }
+  };
 
   const analyzeLead = async () => {
     if (!userInput.trim()) return;
@@ -124,9 +141,22 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                 </div>
               </div>
 
-              <button className={`w-full py-6 ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-600/10 border-blue-600/30'} border-2 rounded-2xl font-black text-xs uppercase tracking-[0.5em] flex items-center justify-center space-x-4 transition-all ${accentColor} hover:bg-accent/20 hover:scale-[1.02]`}>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" /></svg>
-                <span>Listen to Live SDR Call</span>
+              <audio 
+                ref={audioRef} 
+                src="/sdr-call-demo.mp3" 
+                onEnded={() => setIsPlaying(false)}
+                onError={() => setAudioError(true)}
+              />
+              <button 
+                onClick={toggleAudio}
+                className={`w-full py-6 ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-600/10 border-blue-600/30'} border-2 rounded-2xl font-black text-xs uppercase tracking-[0.5em] flex items-center justify-center space-x-4 transition-all ${accentColor} hover:bg-accent/20 hover:scale-[1.02]`}
+              >
+                {isPlaying ? (
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" /></svg>
+                )}
+                <span>{audioError ? 'Demo Coming Soon' : (isPlaying ? 'Pause Call' : 'Listen to Live SDR Call')}</span>
               </button>
             </div>
 

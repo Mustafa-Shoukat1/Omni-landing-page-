@@ -96,13 +96,10 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
 
         <button 
           onClick={onCtaClick}
-          className={`${bgAccent} ${isDarkMode ? 'text-black shadow-accent/30' : 'text-white shadow-blue-600/30'} hover:scale-105 active:scale-95 px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold transition-all shadow-xl tracking-wide shine-effect mb-6`}
+          className={`${bgAccent} ${isDarkMode ? 'text-black shadow-accent/30' : 'text-white shadow-blue-600/30'} hover:scale-105 active:scale-95 px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold transition-all shadow-xl tracking-wide shine-effect`}
         >
-          Check Zip Availability
+          Get Access Now
         </button>
-        <p className={`text-[10px] font-black uppercase tracking-[0.4em] ${textColor} opacity-60`}>
-          Exclusive to One Agent Per Zip Code
-        </p>
       </div>
     </section>
   );
