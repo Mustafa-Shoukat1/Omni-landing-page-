@@ -99,31 +99,31 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
             </div>
           </div>
 
-          <div className={`${cardBg} border-2 ${borderColor} p-10 md:p-16 rounded-[4rem] shadow-2xl glass-card relative`}>
-            <div className="absolute top-10 right-10 text-[10px] font-black text-gray-700 tracking-[0.5em] uppercase opacity-40">Form V.7.01</div>
-            <h3 className={`text-xl sm:text-2xl font-bold mb-8 ${headingColor}`}>Clearance Application</h3>
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-3">
+          <div className={`${cardBg} border-2 ${borderColor} p-6 sm:p-10 md:p-16 rounded-[2.5rem] sm:rounded-[4rem] shadow-2xl glass-card relative`}>
+            <div className="absolute top-6 right-6 sm:top-10 sm:right-10 text-[10px] font-black text-gray-700 tracking-[0.5em] uppercase opacity-40">Form V.7.01</div>
+            <h3 className={`text-xl sm:text-2xl font-bold mb-6 sm:mb-8 ${headingColor}`}>Clearance Application</h3>
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <div className="space-y-2 sm:space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Agent Identifier</label>
-                  <input required type="text" name="name" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Full Name" />
+                  <input required type="text" name="name" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="Full Name" />
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Communication</label>
-                  <input required type="email" name="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="Email Address" />
+                  <input required type="email" name="email" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="Email Address" />
                 </div>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Phone Number</label>
-                <input required type="tel" name="phone" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="(555) 123-4567" />
+                <input required type="tel" name="phone" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="(555) 123-4567" />
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Target Market</label>
-                <input required type="text" name="market" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner`} placeholder="City, State or Zip Code" />
+                <input required type="text" name="market" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="City, State or Zip Code" />
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Current Yield</label>
-                <select name="deals" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-2xl px-6 py-5 focus:outline-none transition-all font-bold shadow-inner`}>
+                <select name="deals" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold shadow-inner text-base`}>
                   <option>0-2 Deals / Month</option>
                   <option>3-5 Deals / Month</option>
                   <option>5-10 Deals / Month</option>
@@ -134,7 +134,7 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:scale-105 active:scale-95 transition-all mt-4 shine-effect disabled:opacity-50 disabled:cursor-not-allowed`}
+                className={`w-full ${bgAccent} ${isDarkMode ? 'text-black' : 'text-white'} py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:scale-105 active:scale-95 transition-all mt-2 sm:mt-4 shine-effect disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]`}
               >
                 {isSubmitting ? 'Processing...' : 'Request Clearance'}
               </button>
