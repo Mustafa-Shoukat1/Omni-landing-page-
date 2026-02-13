@@ -144,13 +144,13 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
               {!showSDRVideo ? (
                 <button 
                   onClick={() => setShowSDRVideo(true)}
-                  className={`w-full py-6 ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-600/10 border-blue-600/30'} border-2 rounded-2xl font-black text-xs uppercase tracking-[0.5em] flex items-center justify-center space-x-4 transition-all ${accentColor} hover:bg-accent/20 hover:scale-[1.02]`}
+                  className={`w-full py-5 sm:py-6 ${isDarkMode ? 'bg-accent/10 border-accent/30' : 'bg-blue-600/10 border-blue-600/30'} border-2 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] flex items-center justify-center space-x-3 sm:space-x-4 transition-all ${accentColor} hover:bg-accent/20 hover:scale-[1.02] active:scale-95`}
                 >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" /></svg>
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" /></svg>
                   <span>Watch Live SDR Call Demo</span>
                 </button>
               ) : (
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-accent/30">
+                <div className="relative w-full aspect-[4/3] sm:aspect-video rounded-2xl overflow-hidden border-2 border-accent/30">
                   <iframe 
                     className="w-full h-full border-0"
                     src={`https://www.youtube.com/embed/Zs60_ssuN6Y?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0&enablejsapi=1&origin=${encodeURIComponent(origin)}`} 
@@ -160,9 +160,9 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                   ></iframe>
                   <button 
                     onClick={() => setShowSDRVideo(false)}
-                    className="absolute top-2 right-2 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all"
+                    className="absolute top-2 right-2 w-10 h-10 sm:w-8 sm:h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all active:scale-90"
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                   </button>
                 </div>
               )}
@@ -191,39 +191,39 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                  <textarea 
                    value={userInput}
                    onChange={(e) => setUserInput(e.target.value)}
-                   className={`w-full h-48 ${isDarkMode ? 'bg-black border-white/10' : 'bg-slate-50 border-blue-100'} border-2 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 ${headingColor} placeholder-gray-700 focus:outline-none focus:border-accent/50 transition-all resize-none text-base sm:text-xl font-bold shadow-inner`}
+                   className={`w-full h-40 sm:h-48 ${isDarkMode ? 'bg-black border-white/10' : 'bg-slate-50 border-blue-100'} border-2 rounded-2xl sm:rounded-[2.5rem] p-4 sm:p-6 md:p-10 pr-20 sm:pr-24 ${headingColor} placeholder-gray-700 focus:outline-none focus:border-accent/50 transition-all resize-none text-base sm:text-xl font-bold shadow-inner`}
                    placeholder="Try: 'I saw your listing on Main St, I'm ready to sell my current home in Malibu ASAP...'"
                  />
                  <button 
                   onClick={analyzeLead}
                   disabled={loading}
-                  className={`absolute bottom-8 right-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-blue-600 text-white'} p-6 rounded-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all disabled:opacity-50 shine-effect`}
+                  className={`absolute bottom-4 right-4 sm:bottom-8 sm:right-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-blue-600 text-white'} p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all disabled:opacity-50 shine-effect min-w-[56px] min-h-[56px] flex items-center justify-center`}
                  >
                    {loading ? (
-                     <div className="w-6 h-6 border-4 border-current border-t-transparent rounded-full animate-spin"></div>
+                     <div className="w-5 h-5 sm:w-6 sm:h-6 border-4 border-current border-t-transparent rounded-full animate-spin"></div>
                    ) : (
-                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                     <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                    )}
                  </button>
                </div>
              </div>
 
              {analysis ? (
-               <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                 <div className="grid grid-cols-2 gap-6">
-                   <div className={`${isDarkMode ? 'bg-white/5' : 'bg-slate-100'} p-8 rounded-[2rem] border-2 ${borderColor} glass-card`}>
-                     <p className={`text-[10px] font-black ${textColor} uppercase tracking-[0.3em] mb-3`}>Detected Intent</p>
-                     <p className={`text-2xl font-black ${headingColor} tracking-tight`}>{analysis.intent}</p>
+               <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                   <div className={`${isDarkMode ? 'bg-white/5' : 'bg-slate-100'} p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-2 ${borderColor} glass-card`}>
+                     <p className={`text-[10px] font-black ${textColor} uppercase tracking-[0.3em] mb-2 sm:mb-3`}>Detected Intent</p>
+                     <p className={`text-lg sm:text-2xl font-black ${headingColor} tracking-tight`}>{analysis.intent}</p>
                    </div>
-                   <div className={`${isDarkMode ? 'bg-white/5' : 'bg-slate-100'} p-8 rounded-[2rem] border-2 ${borderColor} glass-card`}>
-                     <p className={`text-[10px] font-black ${textColor} uppercase tracking-[0.3em] mb-3`}>Heat Level</p>
-                     <p className={`text-2xl font-black ${analysis.heatLevel?.toLowerCase().includes('hot') ? 'text-red-500' : accentColor} tracking-tight`}>{analysis.heatLevel}</p>
+                   <div className={`${isDarkMode ? 'bg-white/5' : 'bg-slate-100'} p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-2 ${borderColor} glass-card`}>
+                     <p className={`text-[10px] font-black ${textColor} uppercase tracking-[0.3em] mb-2 sm:mb-3`}>Heat Level</p>
+                     <p className={`text-lg sm:text-2xl font-black ${analysis.heatLevel?.toLowerCase().includes('hot') ? 'text-red-500' : accentColor} tracking-tight`}>{analysis.heatLevel}</p>
                    </div>
                  </div>
-                 <div className={`${isDarkMode ? 'bg-accent/10 border-accent/40' : 'bg-blue-600/5 border-blue-600/40'} border-2 rounded-[2.5rem] p-10 relative overflow-hidden group`}>
+                 <div className={`${isDarkMode ? 'bg-accent/10 border-accent/40' : 'bg-blue-600/5 border-blue-600/40'} border-2 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 relative overflow-hidden group`}>
                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                   <p className={`text-[11px] font-black ${accentColor} uppercase tracking-[0.4em] mb-4`}>AI Tactical Response</p>
-                   <p className={`text-xl font-bold ${headingColor} leading-relaxed tracking-tight`}>{analysis.nextAction}</p>
+                   <p className={`text-[10px] sm:text-[11px] font-black ${accentColor} uppercase tracking-[0.3em] sm:tracking-[0.4em] mb-3 sm:mb-4`}>AI Tactical Response</p>
+                   <p className={`text-base sm:text-xl font-bold ${headingColor} leading-relaxed tracking-tight`}>{analysis.nextAction}</p>
                  </div>
                </div>
              ) : (
