@@ -74,7 +74,7 @@ const App: React.FC = () => {
         navigate={navigate} 
         currentPage={currentPage} 
       />
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         {renderPage()}
       </main>
       <Footer isDarkMode={isDarkMode} navigate={navigate} />

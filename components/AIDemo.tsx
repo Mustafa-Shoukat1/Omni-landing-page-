@@ -161,8 +161,9 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                   <button 
                     onClick={() => setShowSDRVideo(false)}
                     className="absolute top-2 right-2 w-10 h-10 sm:w-8 sm:h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all active:scale-90"
+                    aria-label="Close video"
                   >
-                    <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                   </button>
                 </div>
               )}
@@ -198,11 +199,12 @@ const AIDemo: React.FC<Props> = ({ isDarkMode, onCtaClick }) => {
                   onClick={analyzeLead}
                   disabled={loading}
                   className={`absolute bottom-4 right-4 sm:bottom-8 sm:right-8 ${isDarkMode ? 'bg-[#00D1FF] text-black' : 'bg-blue-600 text-white'} p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl hover:scale-110 active:scale-90 transition-all disabled:opacity-50 shine-effect min-w-[56px] min-h-[56px] flex items-center justify-center`}
+                  aria-label={loading ? 'Analyzing...' : 'Analyze lead'}
                  >
                    {loading ? (
-                     <div className="w-5 h-5 sm:w-6 sm:h-6 border-4 border-current border-t-transparent rounded-full animate-spin"></div>
+                     <div className="w-5 h-5 sm:w-6 sm:h-6 border-4 border-current border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
                    ) : (
-                     <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                     <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                    )}
                  </button>
                </div>
