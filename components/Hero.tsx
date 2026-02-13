@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
               <>
                 <div className="absolute inset-0 bg-black/40 z-10"></div>
                 <img 
-                  src="https://img.youtube.com/vi/UmIxZatAqwY/maxresdefault.jpg" 
+                  src="https://img.youtube.com/vi/Zs60_ssuN6Y/maxresdefault.jpg" 
                   alt="High Tech Real Estate" 
                   className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 ${isDarkMode ? 'opacity-50 grayscale' : 'opacity-80'}`}
                 />
@@ -85,7 +85,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode, onCtaClick }) => {
             ) : (
               <iframe 
                 className="w-full h-full border-0"
-                src={`https://www.youtube.com/embed/UmIxZatAqwY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1&widgetapi=1&origin=${encodeURIComponent(origin)}`} 
+                src={`https://www.youtube.com/embed/Zs60_ssuN6Y?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1&widgetapi=1&origin=${encodeURIComponent(origin)}`} 
                 title="Omnipresent Agent Demo" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowFullScreen
