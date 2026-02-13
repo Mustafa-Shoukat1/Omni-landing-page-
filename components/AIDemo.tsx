@@ -1,3 +1,14 @@
+/**
+ * AIDemo Component
+ * 
+ * Interactive AI Neural Scanner demo section that showcases lead analysis capabilities.
+ * Features:
+ * - Real-time lead intent analysis with mock AI responses
+ * - Embedded YouTube SDR call demo video
+ * - Theme-aware styling (dark/light mode)
+ * 
+ * @component
+ */
 
 import React, { useState } from 'react';
 
@@ -13,7 +24,10 @@ interface AnalysisResult {
   confidenceScore: number;
 }
 
-// Mock responses for demo purposes - simulates AI analysis
+/**
+ * Analyzes user input and returns a mock AI analysis result
+ * Categorizes leads as Hot, Warm, or Cold based on keyword detection
+ */
 const getMockAnalysis = (input: string): AnalysisResult => {
   const lowerInput = input.toLowerCase();
   
