@@ -113,11 +113,11 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
             <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="space-y-2 sm:space-y-3">
-                  <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Agent Identifier</label>
+                  <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Full Name</label>
                   <input required type="text" name="name" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="Full Name" />
                 </div>
                 <div className="space-y-2 sm:space-y-3">
-                  <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Communication</label>
+                  <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Email Address</label>
                   <input 
                     required 
                     type="email" 
@@ -140,19 +140,6 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                   className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} 
                   placeholder="(555) 123-4567" 
                 />
-              </div>
-              <div className="space-y-2 sm:space-y-3">
-                <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Target Market</label>
-                <input required type="text" name="market" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="City, State or Zip Code" />
-              </div>
-              <div className="space-y-2 sm:space-y-3">
-                <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Current Yield</label>
-                <select name="deals" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold shadow-inner text-base`}>
-                  <option>0-2 Deals / Month</option>
-                  <option>3-5 Deals / Month</option>
-                  <option>5-10 Deals / Month</option>
-                  <option>10+ Deals / Month</option>
-                </select>
               </div>
               {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
               <button 
