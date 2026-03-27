@@ -14,7 +14,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const secret = process.env.GOOGLE_SCRIPT_SECRET;
 
   if (!scriptUrl || !secret) {
-    return res.status(500).json({ success: false, message: 'Server env missing' });
+    return res.status(500).json({
+      success: false,
+      message: 'Server env missing',
+      missing: {
+        GOOGLE_SCRIPT_URL: !scriptUrl,
+        GOOGLE_SCRIPT_SECRET: !secret
+      }
+    });
   }
 
   try {
@@ -36,11 +43,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     try {
       data = JSON.parse(text);
     } catch {
-      // no-op
+      data = { raw: text };
     }
 
     if (!r.ok || data.ok === false) {
-      return res.status(502).json({ success: false, message: 'Sheet write failed', detail: data });
+      return res.status(502).json({
+        success: false,
+        message: 'Sheet write failed',
+        detail: data,
+        upstreamStatus: r.status
+      });
     }
 
     return res.status(200).json({ success: true });

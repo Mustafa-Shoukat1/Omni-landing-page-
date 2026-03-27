@@ -36,12 +36,14 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
         })
       });
       
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
       
       if (response.ok && data.success) {
         setSubmitted(true);
       } else {
-        setError('Something went wrong. Please try again.');
+        const detailError = data?.detail?.error;
+        const message = data?.message;
+        setError(detailError || message || 'Something went wrong. Please try again.');
       }
     } catch (err) {
       setError('Network error. Please check your connection.');
