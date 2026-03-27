@@ -24,25 +24,21 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
     setError('');
     
     const formData = new FormData(e.currentTarget);
-    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || '';
-    
-    if (!accessKey) {
-      setError('Form configuration error. Please contact support.');
-      setIsSubmitting(false);
-      return;
-    }
-    
-    formData.append('access_key', accessKey);
     
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone')
+        })
       });
       
       const data = await response.json();
       
-      if (data.success) {
+      if (response.ok && data.success) {
         setSubmitted(true);
       } else {
         setError('Something went wrong. Please try again.');
