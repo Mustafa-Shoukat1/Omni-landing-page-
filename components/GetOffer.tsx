@@ -5,6 +5,50 @@ interface Props {
   isDarkMode: boolean;
 }
 
+interface LeadPayload {
+  name: string;
+  email: string;
+  phone: string;
+  website: string;
+}
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const NAME_REGEX = /^[a-zA-Z\s.'-]+$/;
+const PHONE_ALLOWED_REGEX = /^[0-9\s()\-+]+$/;
+
+function validateLeadPayload(payload: LeadPayload): string | null {
+  if (payload.website) {
+    return 'Invalid submission.';
+  }
+
+  if (!payload.name || !payload.email || !payload.phone) {
+    return 'Please fill all required fields.';
+  }
+
+  if (payload.name.length < 2 || payload.name.length > 80) {
+    return 'Name must be between 2 and 80 characters.';
+  }
+
+  if (!NAME_REGEX.test(payload.name)) {
+    return 'Name contains invalid characters.';
+  }
+
+  if (payload.email.length > 254 || !EMAIL_REGEX.test(payload.email)) {
+    return 'Please enter a valid email address.';
+  }
+
+  if (payload.phone.length < 7 || payload.phone.length > 20 || !PHONE_ALLOWED_REGEX.test(payload.phone)) {
+    return 'Please enter a valid phone number.';
+  }
+
+  const phoneDigits = payload.phone.replace(/\D/g, '');
+  if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+    return 'Phone number must include 7 to 15 digits.';
+  }
+
+  return null;
+}
+
 const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,16 +68,25 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
     setError('');
     
     const formData = new FormData(e.currentTarget);
+    const payload: LeadPayload = {
+      name: String(formData.get('name') || '').trim(),
+      email: String(formData.get('email') || '').trim().toLowerCase(),
+      phone: String(formData.get('phone') || '').trim(),
+      website: String(formData.get('website') || '').trim()
+    };
+
+    const validationError = validateLeadPayload(payload);
+    if (validationError) {
+      setError(validationError);
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       const response = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone')
-        })
+        body: JSON.stringify(payload)
       });
       
       const data = await response.json().catch(() => ({}));
@@ -112,7 +165,7 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="space-y-2 sm:space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Full Name</label>
-                  <input required type="text" name="name" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="Full Name" />
+                  <input required type="text" name="name" minLength={2} maxLength={80} autoComplete="name" className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} placeholder="Full Name" />
                 </div>
                 <div className="space-y-2 sm:space-y-3">
                   <label className={`block text-[10px] font-black uppercase tracking-[0.3em] ${textColor}`}>Email Address</label>
@@ -120,6 +173,8 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                     required 
                     type="email" 
                     name="email" 
+                    maxLength={254}
+                    autoComplete="email"
                     pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     title="Please enter a valid email address"
                     className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} 
@@ -133,12 +188,24 @@ const GetOffer: React.FC<Props> = ({ isDarkMode }) => {
                   required 
                   type="tel" 
                   name="phone" 
+                  minLength={7}
+                  maxLength={20}
+                  inputMode="tel"
+                  autoComplete="tel"
                   pattern="[0-9\s\-\(\)\+]{7,20}"
                   title="Please enter a valid phone number"
                   className={`w-full ${isDarkMode ? 'bg-black border-white/5 text-white focus:border-[#00D1FF]/50' : 'bg-slate-50 border-blue-100 text-slate-900 focus:border-[#2563EB]/50'} border-2 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 focus:outline-none transition-all font-bold placeholder-gray-700 shadow-inner text-base`} 
                   placeholder="(555) 123-4567" 
                 />
               </div>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
               {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
               <button 
                 type="submit" 
